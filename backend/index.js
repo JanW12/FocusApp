@@ -1,4 +1,4 @@
-
+const { Server } = require('socket.io')
 const express =  require('express')
 const httpServer = express();
 const dialer = require('dialer').Dialer
@@ -14,9 +14,12 @@ const config = {
 dialer.configure(null)
 
 
-httpServer.listen(3000, function(){
+const serverInstance = httpServer.listen(3000, function(){
     console.log('Example app listening on port 3000')
 })
+
+const io = new Server(serverInstance)
+
 httpServer.get('/call/:number1/:number2', (req, res) => {
     const number1 = req.params.number1;
     const number2 = req.params.number2;
@@ -38,18 +41,24 @@ httpServer.get('/call/:number1/:number2', (req, res) => {
         const number2 = '555555555' // tutaj dejemy swój numer
         console.log('Dzwonie', number1, number2)
         bridge = await dialer.call(number1, number2);
+        let oldStatus = null
         let interval = setInterval(async () => {
-        let status = await bridge.getStatus();
-        console.log(status)
+        let currentStatus = await bridge.getStatus();
+        console.log(currentStatus)
+        if (currentStatus !== oldStatus) {
+            oldStatus = currentStatus
+            io.emit('status', currentStatus)
+         }
         if (
-        status === "ANSWERED" ||
-        status === "FAILED" ||
-        status === "BUSY" ||
-        status === "NO ANSWER"
+            currentStatus === "ANSWERED" ||
+            currentStatus === "FAILED" ||
+            currentStatus === "BUSY" ||
+            currentStatus === "NO ANSWER"
         ) {
         console.log("stop");
         clearInterval(interval);
         }
-        }, 2000);
-        res.json({ success: true });
-        })
+        }, 1000);
+        res.json({ id:'123', status: bridge.STATUSES.NEW });
+        });
+    
