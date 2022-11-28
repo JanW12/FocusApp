@@ -20,5 +20,5 @@ cd front
 npm run serve
 ```  
 
-## wejsc na wysweitlony link
+## wejsc na wyświetlony link
     http://localhost:8080/
