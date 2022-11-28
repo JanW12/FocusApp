@@ -1,7 +1,7 @@
 <template>
-<div class="window">
-<router-view/>
-</div>
+  <div class="window">
+    <router-view />
+  </div>
 </template>
 <style>
 .window {
@@ -13,7 +13,7 @@
   bottom: 0;
   left: 0;
   margin: auto;
-  background: rgb(255, 204, 0);
+  background: rgb(46, 49, 223);
   border-radius: 20px;
   box-sizing: border-box;
   padding: 20px;
@@ -72,7 +72,7 @@
   font-size: 22px;
   font-weight: 600;
   line-height: 75px;
-  background: #008000;
+  background: #a50303;
   cursor: pointer;
   color: #fff;
   border-radius: 20px;

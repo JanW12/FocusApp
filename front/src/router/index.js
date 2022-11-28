@@ -5,18 +5,18 @@ import Connected from '../views/ConnectedView.vue'
 import Answered from '../views/AnsweredView.vue'
 
 const routes = [
-{
-path: '/',
-name: 'start',
-component: Start
-},
-{
+  {
+    path: '/',
+    name: 'start',
+    component: Start
+  },
+  {
     path: '/ringing',
     name: 'ringing',
     component: Ringing,
     props: true
-},
-{
+  },
+  {
     path: '/connected',
     name: 'connected',
     component: Connected
@@ -25,10 +25,10 @@ component: Start
     path: '/answered',
     name: 'answered',
     component: Answered
- }
+  }
 ]
 const router = createRouter({
-history: createWebHashHistory(),
-routes
+  history: createWebHashHistory(),
+  routes
 })
 export default router
