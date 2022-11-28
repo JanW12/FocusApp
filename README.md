@@ -1,5 +1,5 @@
 # INSTALACJA APLIKACJI
-## pobranie repozytorium na własny komputer za pomoca git pull/git clone <link do repozytorium>
+## pobranie repozytorium do własnego środowiska za pomoca git pull/git clone <link do repozytorium>
 ## następnie w terminalu
 ```
 npm install
