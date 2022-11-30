@@ -32,8 +32,6 @@ class ViewManager {
     socket.on('status', (status) => {
       if (status !== this.status) {
         this.changeView(status);
-        socket.close;
-        socket.disconnect;
         
       }
       this.status = status;

@@ -5,11 +5,6 @@ const dialer = require('dialer').Dialer
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const config = {
-    url: 'https://uni-call.fcc-online.pl',
-    login: 'focus27',
-    password: 'hnhoi2nkl3v'
-}
 
 dialer.configure(null)
 
